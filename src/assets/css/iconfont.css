@@ -1,0 +1,12 @@
+[class^="el-icon-ali"], [class*="el-icon-ali"] {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 
+ el-icon-ali 需要替换成创建项目时候的FontClass前缀。
+ iconfont 需要替换成创建项目时候的 Font Family
+*/
