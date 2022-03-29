@@ -1,4 +1,12 @@
 import { createRouter, createWebHashHistory } from "vue-router";
+import Home from '@/views/Home.vue'
+import AddGoods from '@/views/AddGoods.vue'
+import Login from '@/views/Login.vue'
+import Swiper from '@/views/Swiper.vue'
+import IndexChange from '@/views/IndexChange.vue'
+import Category from '@/views/Category.vue'
+import Goods from '@/views/Goods.vue'
+import Order from '@/views/Order.vue'
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -6,23 +14,65 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: () => import('@/views/Home.vue')
+      component: Home
     },
     {
       path: '/add',
       name: 'add',
-      component: () => import('@/views/Add.vue')
+      component: AddGoods,
     },
     {
       path: '/login',
       name: 'login',
-      component: () => import('@/views/Login.vue')
+      component: Login
     },
     {
       path: '/swiper',
       name: 'swiper',
-      component: () => import('@/views/Swiper.vue')
-    }
+      component: Swiper
+    },
+    {
+      path: '/hot',
+      name: 'hot',
+      component: IndexChange
+    },
+    {
+      path: '/new',
+      name: 'new',
+      component: IndexChange
+    },
+    {
+      path: '/recommend',
+      name: 'recommend',
+      component: IndexChange
+    },
+    {
+      path: '/category',
+      name: 'category',
+      component: Category,
+      children: [
+        {
+          path: '/category/level2',
+          name: 'level2',
+          component: Category,
+        },
+        {
+          path: '/category/level3',
+          name: 'level3',
+          component: Category,
+        }
+      ]
+    },
+    {
+      path: '/goods',
+      name: 'goods',
+      component: Goods
+    },
+    {
+      path: '/order',
+      name: 'order',
+      component: Order
+    },
   ]
 })
 

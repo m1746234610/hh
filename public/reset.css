@@ -74,6 +74,10 @@ body {
     box-sizing: border-box;
 }
 
+span {
+    cursor: default;
+}
+
 .el-menu {
     border-right: none !important;
 }
@@ -111,4 +115,8 @@ a {
 
 .el-icon-arrow-down:before {
     color: #fff
+}
+
+td>div.cell {
+    cursor: default;
 }

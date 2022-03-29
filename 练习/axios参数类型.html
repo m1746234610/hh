@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.26.1/axios.min.js"></script>
+</head>
+
+<body>
+  <button>post</button>
+  <button>post-params</button>
+  <button>post-data</button>
+
+  <script>
+    let btn = document.querySelectorAll('button')
+
+    btn[0].onclick = function () {
+      axios.post('https://jsonplaceholder.typicode.com/posts/', {
+        name: '123'
+      }).then(res => {
+        console.log(res);
+      })
+    }
+
+    btn[1].onclick = function () {
+      axios.post('https://jsonplaceholder.typicode.com/posts/', {
+        params:{
+          name: '123'
+        }
+      }).then(res => {
+        console.log(res);
+      })
+    }
+
+    btn[2].onclick = function () {
+      axios.post('https://jsonplaceholder.typicode.com/posts/', {
+        data:{
+          name: '123'
+        }
+      }).then(res => {
+        console.log(res);
+      })
+    }
+  </script>
+</body>
+
+</html>

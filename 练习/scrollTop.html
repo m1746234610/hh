@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #root {
+      width: 300px;
+      height: 2000px;
+      margin: 0 auto;
+      background: red;
+      /* overflow: auto; */
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis amet pariatur magni harum, magnam cumque porro incidunt voluptate cupiditate officiis aspernatur beatae, in tempore animi sequi. Quaerat aperiam voluptatibus ratione.
+  </div>
+  <button>上去</button>
+  <script>
+    let btn = document.querySelector('button')
+    btn.onclick = function () {
+      let root = document.querySelector('#root')
+      // window.scroll(0,0)
+      console.log(document.body.scrollTop,document.documentElement.scrollTop);
+      // window.scrollY = 0
+      // root.scrollTop = 0
+      document.body.scrollTop = 0
+      // document.documentElement.scrollTop = 0
+    }
+  </script>
+</body>
+
+</html>

@@ -15,7 +15,7 @@
           :default-active="currentPath"
           :default-openeds="defaultOpen"
         >
-          <!-- 多层 -->
+          <!-- 一级菜单 -->
           <el-sub-menu index="1">
             <template #title>
               <span>一级菜单</span>
@@ -26,21 +26,54 @@
                 <span>首页</span>
               </el-menu-item>
               <el-menu-item index="/add">
-                <i class="iconfont icon-tianjia" />
-                <span>添加</span>
+                <i class="iconfont icon-tianjia3" />
+                <span>添加商品</span>
               </el-menu-item>
             </el-menu-item-group>
           </el-sub-menu>
 
-          <!-- 添加轮播图配置 -->
+          <!-- 首页配置 -->
           <el-sub-menu index="2">
             <template #title>
-              <span>首页配置</span>
+              <span>首页</span>
             </template>
             <el-menu-item-group>
               <el-menu-item index="/swiper">
                 <i class="iconfont icon-lunboxiaoguo" />
                 <span>轮播图</span>
+              </el-menu-item>
+              <el-menu-item index="/hot">
+                <i class="iconfont icon-a-ziyuan679" />
+                <span>热销商品</span>
+              </el-menu-item>
+              <el-menu-item index="/new">
+                <i class="iconfont icon-xinpintuijian" />
+                <span>新品上线</span>
+              </el-menu-item>
+              <el-menu-item index="/recommend">
+                <i class="iconfont icon-tuijian" />
+                <span>为你推荐</span>
+              </el-menu-item>
+            </el-menu-item-group>
+          </el-sub-menu>
+
+          <!-- 模块管理 -->
+          <el-sub-menu index="3">
+            <template #title>
+              <span>模块管理</span>
+            </template>
+            <el-menu-item-group>
+              <el-menu-item index="/category">
+                <i class="iconfont icon-yingyongzhongxin" />
+                <span>分类管理</span>
+              </el-menu-item>
+              <el-menu-item index="/goods">
+                <i class="iconfont icon-shangpinguanli" />
+                <span>商品管理</span>
+              </el-menu-item>
+              <el-menu-item index="/order">
+                <i class="iconfont icon-dingdanguanli" />
+                <span>订单管理</span>
               </el-menu-item>
             </el-menu-item-group>
           </el-sub-menu>
@@ -66,7 +99,7 @@
 <script>
 import Header from "./components/Header.vue"
 import Footer from "./components/Footer.vue"
-import { ref, reactive, toRefs, nextTick } from "vue"
+import { ref, reactive, toRefs, onMounted } from "vue"
 import { useRouter } from "vue-router"
 import { localGet, pathMap } from "./utils"
 const ENV = import.meta.env
@@ -82,24 +115,17 @@ export default {
     const state = reactive({
       showMenu: true,
       currentPath: '/',
-      defaultOpen: ['1', '2'],
+      defaultOpen: ['1', '2', '3'],
     })
 
+    // url改变后，导航栏对应子菜单项高亮
+    state.currentPath = location.hash.split('/')[1] || '/'
 
-    nextTick(() => {
-      //** 组件在刷新后会重新加载，如果url路径不变，路由守卫就不会触发
-      if (location.hash.split('/')[1] === 'login') {
-        // 防止菜单栏和登录组件一起出现
-        state.showMenu = false
-      }
-
-      // url改变后，导航栏对应子菜单项高亮
-      state.currentPath = location.hash.split('/')[1]
-    })
-
-
-    // 这种写法会晚，因为组件都加载出来了，在判断就晚了
-    // state.showMenu = noMenu.includes(location.hash.split('/')[1]) === true ? false : true
+    //** 组件在刷新后会重新加载，如果url路径不变，路由守卫就不会触发
+    if (location.hash.split('/')[1] === 'login') {
+      // 防止菜单栏和登录组件一起出现
+      state.showMenu = false
+    }
 
     // 跳转之前，判断是否登录
     router.beforeEach((to, from, next) => {
@@ -127,8 +153,6 @@ export default {
       document.title = pathMap[to.name]
     })
 
-
-
     return {
       ...toRefs(state)
     }
@@ -142,6 +166,7 @@ export default {
   background-color: #fff;
   .container {
     min-height: 100vh;
+    position: relative;
     // 左侧边栏
     .aside {
       width: 200px !important;
@@ -181,14 +206,17 @@ export default {
 
     // 右边
     .content {
+      position: relative;
       display: flex;
       flex-direction: column;
       height: 100vh;
+
       overflow: hidden;
       .main {
-        height: calc(100vh - 100px);
+        // height: calc(100vh - 100px);
         overflow: auto;
         padding: 10px;
+        margin: 50px 0;
       }
     }
   }
@@ -197,14 +225,13 @@ export default {
 
 <style lang="less" scoped>
 .iconfont-position {
-  margin-right: 5px;
   position: absolute;
   top: -1px;
 }
 .iconfont + span {
-  margin-left: 5px;
+  margin-left: 10px;
 }
 .iconfont-position + span {
-  margin-left: 21px;
+  margin-left: 26px;
 }
 </style>

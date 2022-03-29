@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="file" name="" id="file">
+  <img src="" alt="">
+  <script>
+    let file = document.querySelector('#file')
+    let img = document.querySelector('img')
+    file.onchange = function (e) {
+      let fileData = e.target.files[0]
+      let pet = /^img/
+      console.log(fileData.type,pet.test);
+
+      let reader = new FileReader()
+      reader.readAsDataURL(fileData)
+      reader.onload = function (e) {
+        img.setAttribute('src', this.result)
+      }
+    }
+  </script>
+</body>
+
+</html>
