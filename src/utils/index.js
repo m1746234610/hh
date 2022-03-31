@@ -32,10 +32,14 @@ export const pathMap = {
   level3: '分类三级管理',
   goods: '商品管理',
   order: '订单管理',
+  order_detail: '订单详情',
+  guest: '会员管理',
+  account: '修改密码',
 }
 
 // 公用图片上传接口
 // 单张图片上传
 export const uploadImgServer = 'http://backend-api-02.newbee.ltd/manage-api/v1/upload/file'
+
 // 多张图片上传
 export const uploadImgsServer = 'http://backend-api-02.newbee.ltd/manage-api/v1/upload/files'

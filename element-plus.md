@@ -19,7 +19,7 @@
   用途: 
     rules:[
       <!-- 
-        key: 跟要校验的收集到的信息的名字保持一致
+        key: 跟要校验的收集到的信息(userForm里的信息就是收集到的信息)的名字保持一致 (如果相对userForm里的userAccount做校验，那rules里也要有一个userAccount的key去匹配)
         value: 具体的验证规则
         key--value
         

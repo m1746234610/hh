@@ -74,8 +74,12 @@
 
         <el-form-item label="上架状态" prop="goodsSellStatus">
           <el-radio-group v-model="goodsForm.goodsSellStatus" size="large">
-            <el-radio label="0">上架</el-radio>
-            <el-radio label="1">下架</el-radio>
+            <el-radio label="0">
+              <span>上架</span>
+            </el-radio>
+            <el-radio label="1">
+              <span>下架</span>
+            </el-radio>
           </el-radio-group>
         </el-form-item>
 
@@ -342,5 +346,11 @@ export default {
       }
     }
   }
+}
+</style>
+
+<style scoped>
+span {
+  cursor: pointer;
 }
 </style>

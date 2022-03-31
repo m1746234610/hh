@@ -69,7 +69,7 @@ export default {
     router.afterEach((to) => {
       state.name = pathMap[to.name] || '默认'
       // level2 和 level3 需要展示返回icon
-      state.hasBack = ['level2', 'level3'].includes(to.name)
+      state.hasBack = ['level2', 'level3','order_detail'].includes(to.name)
     })
     state.name = pathMap[location.hash.split('/')[1]] || '默认'
 

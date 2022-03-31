@@ -102,7 +102,6 @@ export default {
 
     // 如果图片格式通过，将图片传给ruleForm.url作为参数（上传图片）
     const handleUrlSuccess = (val) => {
-      console.log(12313);
       state.ruleForm.url = val.data || ''
     }
 

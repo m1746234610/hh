@@ -95,19 +95,6 @@ export default {
           console.log('error submit!!')
           return false;
         }
-
-        // if (valid) {
-        //   axios.post('/adminUser/login', {
-        //     userName: state.ruleForm.userAccount || '',
-        //     passwordMd5: md5(state.ruleForm.userPassword)
-        //   }).then(res => {
-        //     localSet('token', res)
-        //     window.location.href = '/'
-        //   })
-        // } else {
-        //   console.log('error submit!!')
-        //   return false;
-        // }
       })
     }
 

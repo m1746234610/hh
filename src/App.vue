@@ -75,6 +75,23 @@
                 <i class="iconfont icon-dingdanguanli" />
                 <span>订单管理</span>
               </el-menu-item>
+              <el-menu-item index="/guest">
+                <i class="iconfont icon-huiyuanguanli-copy" />
+                <span>会员管理</span>
+              </el-menu-item>
+            </el-menu-item-group>
+          </el-sub-menu>
+
+          <!-- 系统管理 -->
+          <el-sub-menu index="4">
+            <template #title>
+              <span>系统管理</span>
+            </template>
+            <el-menu-item-group>
+              <el-menu-item index="/account">
+                <i class="iconfont icon-xiugaimima" />
+                <span>修改密码</span>
+              </el-menu-item>
             </el-menu-item-group>
           </el-sub-menu>
         </el-menu>
@@ -115,7 +132,7 @@ export default {
     const state = reactive({
       showMenu: true,
       currentPath: '/',
-      defaultOpen: ['1', '2', '3'],
+      defaultOpen: ['1', '2', '3', '4'],
     })
 
     // url改变后，导航栏对应子菜单项高亮
@@ -188,6 +205,9 @@ export default {
       // 导航栏--路由
       .el-menu {
         border-right: none !important;
+        span {
+          cursor: pointer;
+        }
         .el-submenu {
           border-top: 1px solid hsla(0, 0%, 100%, 0.05);
           border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -223,7 +243,7 @@ export default {
 }
 </style>
 
-<style lang="less" scoped>
+<style lang="less">
 .iconfont-position {
   position: absolute;
   top: -1px;

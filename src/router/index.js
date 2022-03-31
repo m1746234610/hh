@@ -7,6 +7,9 @@ import IndexChange from '@/views/IndexChange.vue'
 import Category from '@/views/Category.vue'
 import Goods from '@/views/Goods.vue'
 import Order from '@/views/Order.vue'
+import OrderDetail from '@/views/OrderDetail.vue'
+import Guest from '@/views/Guest.vue'
+import Account from '@/views/Account.vue'
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -72,6 +75,21 @@ const router = createRouter({
       path: '/order',
       name: 'order',
       component: Order
+    },
+    {
+      path: '/order_detail',
+      name: 'order_detail',
+      component: OrderDetail
+    },
+    {
+      path: '/guest',
+      name: 'guest',
+      component: Guest
+    },
+    {
+      path: '/account',
+      name: 'account',
+      component: Account
     },
   ]
 })
