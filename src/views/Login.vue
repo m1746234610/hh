@@ -53,9 +53,12 @@ import axios from '@/utils/axios'
 import md5 from 'js-md5'
 import { ref, reactive, toRefs } from "vue"
 import { localSet } from '../utils'
+import { useStore } from 'vuex'
+import router from '../router'
 export default {
   name: 'Login',
   setup() {
+    let store = useStore() // 使用vuex
     let loginForm = ref(null)
     // 收集并校验信息
     let state = reactive({
@@ -73,7 +76,7 @@ export default {
         ],
       }
     })
-    console.log('login');
+
     // 表单提交方法
     const submitForm = async () => {
       loginForm.value.validate((valid) => {
@@ -89,7 +92,6 @@ export default {
             // 这里我们将其存储到 localStorage 里面
             localSet('token', res)
             // 此处登录完成之后，需要刷新页面，否则 axios.js 文件内，axios.defaults.headers 是拿不到最新的 token 信息的。会导致停留在登录页面
-            window.location.href = '/'
           })
         } else {
           console.log('error submit!!')

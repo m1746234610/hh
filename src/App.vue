@@ -94,6 +94,18 @@
               </el-menu-item>
             </el-menu-item-group>
           </el-sub-menu>
+
+          <!-- 练习vuex -->
+          <el-sub-menu index="5">
+            <template #title>
+              <span>vuex</span>
+            </template>
+            <el-menu-item-group>
+              <el-menu-item index="/vuex">
+                <span>练习vuex</span>
+              </el-menu-item>
+            </el-menu-item-group>
+          </el-sub-menu>
         </el-menu>
       </el-aside>
 
@@ -132,7 +144,7 @@ export default {
     const state = reactive({
       showMenu: true,
       currentPath: '/',
-      defaultOpen: ['1', '2', '3', '4'],
+      defaultOpen: ['5'],
     })
 
     // url改变后，导航栏对应子菜单项高亮

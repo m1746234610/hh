@@ -91,6 +91,11 @@ const router = createRouter({
       name: 'account',
       component: Account
     },
+    {
+      path: '/vuex',
+      name: 'vuex',
+      component: ()=>import('@/views/Vuex.vue')
+    }
   ]
 })
 

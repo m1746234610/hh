@@ -34,14 +34,17 @@ import { useRouter } from "vue-router"
 import { localRemove } from "../utils"
 import axios from "@/utils/axios"
 import md5 from 'js-md5'
+import { useStore } from "vuex"
+import store from "../store"
 export default {
   name: 'Account',
   setup() {
+    const stroe = useStore()
     const nameRef = ref(null)
     const passRef = ref(null)
     const router = useRouter()
     const state = reactive({
-      user: null,
+      // user: null,
       nameForm: {
         account: '',
         name: '',
@@ -68,11 +71,16 @@ export default {
 
     // 初始加载用户信息
     onMounted(() => {
-      axios.get('/adminUser/profile').then(res => {
-        state.user = res
-        state.nameForm.account = res.loginUserName
-        state.nameForm.name = res.nickName
-      })
+      // console.log(store.state.userInto, store.state.userInto.name);
+
+      
+      state.nameForm = store.state.userInto
+
+      // axios.get('/adminUser/profile').then(res => {
+      //   // state.user = res
+      //   state.nameForm.account = res.loginUserName
+      //   state.nameForm.name = res.nickName
+      // })
     })
 
     // 提交昵称登录名修改

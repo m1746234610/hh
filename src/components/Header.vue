@@ -28,9 +28,11 @@ import { useRouter } from "vue-router"
 import { ref, reactive, toRefs, onMounted } from "vue"
 import { pathMap, localRemove } from "@/utils"
 import axios from "@/utils/axios"
+import { useStore } from "vuex"
 export default {
   name: 'Header',
   setup() {
+    let store = useStore()
     let visible = ref(false)
     // 获取路由实例
     const router = useRouter()
@@ -51,12 +53,14 @@ export default {
     const getUserInfo = async () => {
       const userInfo = await axios.get('/adminUser/profile')
       state.userInfo = userInfo
+      let { nickName, loginUserName } = state.userInfo
+      store.commit('UserInto', { nickName, loginUserName })
     }
 
-    // 推出登录
+    // 退出登录
     const logout = () => {
       // 向服务器发送一个请求，用来告知用户以推出登录
-      axios.delete('/logout').then(res => {
+      axios.delete('/logout').then(() => {
         // 将本地token信息删除
         localRemove('token')
         // 退出登录后，跳转到登录页面
@@ -69,7 +73,7 @@ export default {
     router.afterEach((to) => {
       state.name = pathMap[to.name] || '默认'
       // level2 和 level3 需要展示返回icon
-      state.hasBack = ['level2', 'level3','order_detail'].includes(to.name)
+      state.hasBack = ['level2', 'level3', 'order_detail'].includes(to.name)
     })
     state.name = pathMap[location.hash.split('/')[1]] || '默认'
 
@@ -88,7 +92,7 @@ export default {
 
 <style lang="less" scoped>
 .header {
-  width: calc(100% - 200px) ;
+  width: calc(100% - 200px);
   position: fixed;
   top: 0;
   right: 0;
@@ -118,6 +122,7 @@ export default {
   }
 }
 </style>
+
 <style lang="less">
 .popper-user-box {
   background: url("../assets/images/loginBack.jpg") 50% 50% no-repeat !important;

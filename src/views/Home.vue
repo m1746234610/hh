@@ -39,7 +39,6 @@
 
 <script>
 import { onMounted, onUnmounted } from "vue"
-
 let myChart = null
 export default {
   name: 'Home',
